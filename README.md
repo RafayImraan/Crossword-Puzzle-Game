@@ -1,68 +1,215 @@
-# Crossword Puzzle Game — Group 4 (DSA Project)
+# Crossword Puzzle Game
 
-Interlocking Grid Generator & Solver using **Hashing** and **Backtracking**, implemented in **Java / JavaFX**, exactly per the project proposal.
+A JavaFX-based Crossword Puzzle Game that generates and solves interlocking crossword puzzles using **Hashing** and **Backtracking**. Developed as a Data Structures & Algorithms (DSA) project, the application demonstrates the practical use of data structures and recursive search algorithms in generating valid crossword layouts.
 
-## How it maps to the proposal
+---
 
-| Proposal section | File(s) |
-|---|---|
-| Hash Map (Section 4) | `HashIndex.java` — indexes words by `length#position#letter`; `CrosswordGenerator.generateCandidates()` calls `hashIndex.matchesPattern(...)` (an O(1) average hash lookup) to test letter matches, instead of a plain character comparison |
-| Hash Set (Section 4) | `byLetterPosition` buckets inside `HashIndex.java` are `Set<WordEntry>`, and `CrosswordGenerator.usedWords` is a `Set<WordEntry>` that tracks already-placed words to prevent duplicates |
-| 2D Array — the grid (Section 4) | `Grid.java` |
-| Recursion / Stack (Section 4) | `CrosswordGenerator.backtrack()` — the recursive call stack itself; each dead end pops back via a normal `return false` |
-| Slot List — per-word metadata (Section 4) | `PlacedWord.java` (position, direction, length, and `getWord().getClue()` for the clue text) |
-| Backtracking / CSP core algorithm (Section 5) | `CrosswordGenerator.java` — same `backtrack(slots, index, grid, used)` structure as the pseudocode, plus `generateCandidates()` (domain of legal placements) and `numberSlots()` (grid numbering) |
-| GUI: numbered grid, Across/Down clues, validation (Section 2 & Section 3 "User fills cells" loop) | `CrosswordApp.java` |
-| Word/clue model | `WordEntry.java`, `Direction.java` |
-| **Conclusion — "Future extensions": difficulty levels, themed word packs, scoring system** | `CrosswordApp.java` — Easy/Medium/Hard difficulty (controls hint allowance), 4 built-in themed word packs (Data Structures, Space, Animals, Sports) plus a Custom option, and a time+hints based score shown on completion |
+## Features
 
-### Why the hashing matters here
-An earlier draft of this code built the `HashIndex` but never actually queried it during backtracking (it just compared characters directly) — that would have technically run, but wouldn't have demonstrated the "hashing" technique the project is named after. This has been fixed: candidate-letter matching now goes through `HashIndex.matchesPattern()`, which does a real hash-bucket lookup.
+- Interactive crossword puzzle interface built with JavaFX
+- Automatic crossword generation using recursive backtracking
+- Efficient word lookup through hash-based indexing
+- Multiple built-in themed word packs
+- Custom word list support
+- Easy, Medium, and Hard difficulty levels
+- Hint system with score deduction
+- Real-time answer validation
+- Puzzle timer and scoring system
+- Numbered crossword grid with Across and Down clues
+- Reveal solution option for testing and demonstration
 
-### Suggested responsibility split (matches your proposal's table)
-- **Abdul Rafay Imran** — `HashIndex.java` + `CrosswordGenerator.java` (word-bank hashing module & backtracking grid generator)
-- **Muhammad Affan Ansari** — `numberSlots()` in `CrosswordGenerator.java` + the clue-mapping/validation logic in `CrosswordApp.java` (`renderClues()`, `checkAnswers()`)
-- **Daniyal Tahir** — the rest of `CrosswordApp.java` (grid rendering, layout, buttons) + overall integration/testing
+---
 
-## How to run
+## Technologies Used
 
-### Option A — Maven (recommended, works on Windows/Mac/Linux)
-Requires JDK 17+ and Maven installed.
+- Java 17+
+- JavaFX 21
+- Maven
+- Object-Oriented Programming
+- Data Structures & Algorithms
+
+---
+
+## Data Structures & Algorithms
+
+The project demonstrates the practical implementation of several core DSA concepts.
+
+| Concept | Implementation |
+|---------|----------------|
+| **Hash Map** | `HashIndex.java` stores words using `length#position#letter` keys for efficient candidate retrieval. |
+| **Hash Set** | Tracks previously placed words and stores indexed buckets to avoid duplicate placements. |
+| **2D Array** | Represents the crossword grid. |
+| **Recursion** | Recursive backtracking explores valid puzzle configurations. |
+| **Backtracking** | Generates crossword layouts while reverting invalid placements. |
+| **Lists** | Manage crossword slots and placed word metadata. |
+
+---
+
+## Project Structure
+
+```
+CrosswordGame
+│
+├── src
+│   ├── CrosswordApp.java
+│   ├── CrosswordGenerator.java
+│   ├── Grid.java
+│   ├── HashIndex.java
+│   ├── PlacedWord.java
+│   ├── WordEntry.java
+│   └── Direction.java
+│
+├── pom.xml
+└── README.md
+```
+
+---
+
+## Algorithm Overview
+
+### Hash-Based Word Indexing
+
+Instead of checking every word character-by-character, the application builds a hash index where words are grouped by:
+
+- Word length
+- Character position
+- Letter value
+
+This allows candidate words to be retrieved using average **O(1)** hash lookups, significantly reducing unnecessary comparisons during puzzle generation.
+
+---
+
+### Backtracking Puzzle Generation
+
+The crossword generator follows a recursive backtracking approach:
+
+1. Identify all available crossword slots.
+2. Select the next empty slot.
+3. Retrieve candidate words from the hash index.
+4. Attempt to place each valid candidate.
+5. Continue recursively.
+6. If no valid placement exists, backtrack and try another candidate.
+
+This process continues until either:
+
+- A complete crossword is generated, or
+- All possibilities have been exhausted.
+
+---
+
+## Application Workflow
+
+1. Load a word pack.
+2. Generate crossword slots.
+3. Build the hash index.
+4. Generate the crossword using backtracking.
+5. Display the puzzle and clues.
+6. Allow users to solve the puzzle.
+7. Validate answers and calculate the final score.
+
+---
+
+## Running the Project
+
+### Requirements
+
+- JDK 17 or later
+- Maven
+
+### Clone the Repository
 
 ```bash
-cd CrosswordGame
+git clone https://github.com/RafayImraan/Crossword-Puzzle-Game.git
+cd Crossword-Puzzle-Game
+```
+
+### Run with Maven
+
+```bash
 mvn clean javafx:run
 ```
 
-Maven will automatically download the JavaFX 21 dependencies the first time.
+Maven will automatically download all required JavaFX dependencies during the first build.
 
-### Option B — Quick run on Ubuntu / GitHub Codespaces (no Maven needed)
-```bash
-sudo apt-get update
-sudo apt-get install -y openjfx default-jdk-headless
-cd CrosswordGame
-javac -cp "/usr/share/openjfx/lib/*" -d out $(find src -name "*.java")
-java -cp "out:/usr/share/openjfx/lib/*" com.group4.crossword.CrosswordApp
+---
+
+## Using the Application
+
+The application includes four predefined word packs:
+
+- Data Structures
+- Space
+- Animals
+- Sports
+
+A **Custom** option also allows users to create their own crossword puzzles.
+
+Custom words should be entered in the following format:
+
 ```
-(Note: Codespaces has no display by default — for the GUI you'll need a desktop-forwarding
-setup, e.g. VS Code's "Simple Browser"/`code --remote` with X11 forwarding, or just run this
-on your local machine instead of inside the container.)
+WORD:Clue
+TREE:A data structure
+ARRAY:Collection of elements
+```
 
-## Using the app
+---
 
-- On launch it loads the **Data Structures pack** (TREE, ARRAY, CODE, NODE, DATA — the proposal's own sample) and generates the same interlocking grid shown in Figure 2.
-- **Word Pack** dropdown: choose a themed pack (Data Structures, Space, Animals, Sports) or "Custom" to type your own list in the format `WORD:Clue text`, one per line.
-- **Difficulty** dropdown: Easy (10 hints), Medium (4 hints), Hard (0 hints, hint button disabled).
-- **Generate Puzzle** builds a fresh grid and resets the timer/score for the current word pack + difficulty.
-- **Check Answers** validates every filled cell against the solution (green = correct, red = wrong/empty) and shows "Congratulations! Puzzle completed." plus your time/hints/score when the whole grid is correct.
-- **Use Hint** reveals one correct letter (costs points, capped by difficulty).
-- **Reveal Solution** fills in every answer for testing/demo purposes (no score awarded).
-- Score formula: `1000 − 2×seconds_elapsed − 50×hints_used`, floored at 0.
+## Difficulty Levels
 
-## A note on word-list generation
+| Difficulty | Hints Available |
+|------------|----------------|
+| Easy | 10 |
+| Medium | 4 |
+| Hard | 0 |
 
-Not every word list will interlock into a single connected grid — this is inherent to the
-problem (it's exactly why backtracking is needed instead of a greedy placement). If
-**Generate Puzzle** reports a failure, pick words that share more letters with each other
-(as CODE/NODE/DATA/ARRAY/TREE do), or increase `GRID_SIZE` in `CrosswordApp.java`.
-#
+---
+
+## Scoring
+
+The final score is calculated using:
+
+```
+Score = 1000 − (2 × Time in Seconds) − (50 × Hints Used)
+```
+
+The minimum possible score is **0**.
+
+---
+
+## Project Highlights
+
+- Efficient hash-based word indexing
+- Recursive backtracking algorithm
+- Dynamic crossword generation
+- Interactive JavaFX graphical interface
+- Multiple difficulty levels
+- Custom puzzle support
+- Automatic clue generation and validation
+- Clean object-oriented architecture
+
+---
+
+## Future Enhancements
+
+Possible improvements include:
+
+- Larger crossword grids
+- Dictionary API integration
+- Crossword import/export
+- Save and resume puzzles
+- Multiplayer mode
+- Additional puzzle themes
+- Leaderboards and achievements
+- Improved crossword generation heuristics
+
+---
+
+## Academic Purpose
+
+This project was developed as part of a **Data Structures & Algorithms** course to demonstrate the practical application of hashing, recursion, backtracking, and object-oriented design in solving a real-world problem.
+
+---
+
+## License
+
+This project is intended for educational purposes.
