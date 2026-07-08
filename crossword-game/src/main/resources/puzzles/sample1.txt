@@ -1,0 +1,11 @@
+# Sample puzzle 1 - CS fundamentals
+TREE = A hierarchical data structure with a root and child nodes
+ARRAY = A contiguous block of memory storing elements of the same type
+CODE = Source program instructions written in a programming language
+NODE = A single element of a linked list or graph
+DATA = Raw facts and figures processed by a program
+QUEUE = A FIFO linear data structure
+STACK = A LIFO linear data structure
+HEAP = A tree-based data structure satisfying the heap property
+GRAPH = A set of vertices connected by edges
+HASH = A function that maps keys to bucket indices

@@ -1,0 +1,13 @@
+# Sample puzzle 2 - Java & OOP
+CLASS = Blueprint for creating objects in Java
+OBJECT = An instance of a class
+METHOD = A function defined inside a class
+INHERIT = Mechanism for acquiring parent class properties
+POLYMORPHISM = Ability to take many forms
+ENCAPSULATION = Hiding internal details of an object
+INTERFACE = A completely abstract type containing only method signatures
+ABSTRACT = A class that cannot be instantiated directly
+STRING = Immutable sequence of characters in Java
+THREAD = A lightweight subprocess for concurrent execution
+EXCEPTION = An event that disrupts normal program flow
+PACKAGE = A namespace for organizing related classes

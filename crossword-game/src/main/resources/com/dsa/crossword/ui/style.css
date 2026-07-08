@@ -1,0 +1,148 @@
+/* Crossword Puzzle Game — JavaFX styles */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-background-color: #f4f6fb;
+}
+
+.header {
+    -fx-background-color: linear-gradient(to right, #1d3557, #457b9d);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 2);
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 4px;
+}
+
+.timer {
+    -fx-text-fill: #ffd166;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", monospace;
+    -fx-background-color: rgba(0,0,0,0.25);
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 6;
+}
+
+.button {
+    -fx-background-color: #ffd166;
+    -fx-text-fill: #1d3557;
+    -fx-font-weight: bold;
+    -fx-padding: 6 14 6 14;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-background-color: #ffdd80; }
+.button:pressed { -fx-background-color: #e6bc5a; }
+
+.clue-panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d4dd;
+    -fx-border-width: 0 0 0 1;
+}
+
+.grid-scroll {
+    -fx-background-color: #f4f6fb;
+    -fx-background: #f4f6fb;
+    -fx-padding: 0;
+}
+
+.grid-scroll > .viewport {
+    -fx-background-color: #f4f6fb;
+}
+
+.clue-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d3557;
+    -fx-padding: 6 0 4 0;
+}
+
+.list-view {
+    -fx-background-color: #f9fafc;
+    -fx-border-color: #d0d4dd;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+.list-cell {
+    -fx-padding: 6 8 6 8;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #a8dadc;
+    -fx-text-fill: #1d3557;
+}
+
+.statusbar {
+    -fx-background-color: #1d3557;
+}
+.status {
+    -fx-text-fill: #f1faee;
+    -fx-font-size: 13px;
+}
+
+.progress {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1d3557;
+    -fx-font-weight: bold;
+}
+
+/* Grid cells */
+.grid-pane {
+    -fx-background-color: #1d3557;
+    -fx-padding: 4;
+    -fx-background-radius: 6;
+}
+
+.grid-cell {
+    -fx-background-color: white;
+    -fx-border-color: #1d3557;
+    -fx-border-width: 1;
+}
+
+.grid-cell-blocked {
+    -fx-background-color: #1d3557;
+    -fx-border-color: #1d3557;
+    -fx-border-width: 1;
+}
+
+.cell-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #1d3557;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+.cell-input:focused {
+    -fx-background-color: #e0fbfc;
+}
+
+.cell-number {
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6c757d;
+}
+
+.cell-highlight {
+    -fx-background-color: #fff3b0;
+}
+.cell-active {
+    -fx-background-color: #ffd166;
+    -fx-border-color: #e09e3a;
+    -fx-border-width: 2;
+}
+
+.cell-correct {
+    -fx-background-color: #b7e4c7;
+}
+.cell-wrong {
+    -fx-background-color: #f4a8a8;
+}
+
+.dialog-pane {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}

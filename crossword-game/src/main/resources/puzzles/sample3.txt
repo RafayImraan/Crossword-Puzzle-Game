@@ -1,0 +1,13 @@
+# Sample puzzle 3 - Pakistan / Karachi theme
+KARACHI = Largest city of Pakistan, located in Sindh
+SINDH = Province home to Karachi
+INDUS = Longest river of Pakistan
+URDU = National language of Pakistan
+RUPEE = Currency of Pakistan
+PESHAWAR = Capital city of Khyber Pakhtunkhwa
+LAHORE = Cultural capital of Pakistan
+ISLAMABAD = Capital city of Pakistan
+QUETTA = Capital city of Balochistan
+MURREE = A famous hill station in Pakistan
+FAISAL = Name of the famous mosque in Islamabad
+MINAR = Tall tower, as in Minar-e-Pakistan
