@@ -1,7 +1,6 @@
 package com.dsa.crossword.test;
 
 import com.dsa.crossword.datastructures.HashIndexedWordBank;
-import com.dsa.crossword.generator.CrosswordGenerator;
 import com.dsa.crossword.model.Direction;
 import com.dsa.crossword.model.Grid;
 import com.dsa.crossword.model.Slot;
